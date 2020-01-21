@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Diff > Chaînes N°{{ chaineNumberChaine }} > Edition{% endblock %}
+
+{% block body %}
+    <table class="striped">
+        <thead>
+        <tr>
+            <th>Nombre de Personnes</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for ligne in lignes %}
+            <tr>
+                <td>{{ ligne.nbrPerson }}</td>
+                <td><a class="waves-effect waves-light btn" href="">Modifier</a></td>
+                <td><a class="waves-effect waves-light btn" style="background-color: #e12f2f;" href="">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

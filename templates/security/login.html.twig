@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DifforVert > Connexion{% endblock %}
+
+{% block body %}
+    <form method="post">
+
+
+
+        <div class="container login" style="margin-top: 5%;">
+            <div class="container">
+                <div class="row" style="text-align: center; margin-bottom: 5%">
+                    <img src="img/difforvert.png">
+                </div>
+                <div class="row">
+                    <label for="inputUsername" style="color: #6C8E15;">Username</label>
+                    <input type="text" style="border-bottom: 1px solid #6C8E15; box-shadow: 0 1px 0 0 #6C8E15;" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+                    {% if error %}
+                        <div class="alert alert-danger" style="color: red;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <label for="inputPassword" style="color: #6C8E15;">Password</label>
+                    <input type="password" style="border-bottom: 1px solid #6C8E15; box-shadow: 0 1px 0 0 #6C8E15;" name="password" id="inputPassword" class="form-control" required>
+                    {% if error %}
+                        <span class="helper-text" style="color: red;">Mauvais mot de passe.</span>
+                    {% endif %}
+                </div>
+                <div class="row" style="text-align: center;">
+                    <button class="btn btn-lg btn-primary" style="background-color: #6C8E15;" type="submit">
+                        Connecter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+    </form>
+{% endblock %}

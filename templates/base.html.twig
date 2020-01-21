@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ asset('img/favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('materialize/css/materialize.css') }}">
+    <link href="{{ asset('materialize/icone/icone.css') }}" rel="stylesheet">
+    {% block stylesheets %}
+
+    {% endblock %}
+</head>
+<header>
+    {% if app.request.get('_route') != "app_login" %}
+        <nav>
+            <div class="nav-wrapper" style="background-color: #6C8E15;">
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="{{ path('dashboard') }}"><img style="margin-top: 2px;" src="{{ asset('img/logo_difforvert.png') }}"/></a></li>
+                    <li><a href="{{ path('app_login') }}"><h5>DifforVert - {{ app.user.firstname }} {{ app.user.lastname }}</h5></a></li>
+                    {% if app.request.get('_route') == "chaine_edit" %}<li><h5>- Chaine N°{{ chaineNumberChaine }}</h5></li>{% endif %}
+                </ul>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{{ path('chaine_index') }}">Chaînes</a></li>
+                    {% if app.request.get('_route') == "chaine_index" %}<li><a class="waves-effect waves-light btn" href="{{ path('chaine_index') }}">Ajouter une chaîne</a></li>{% endif %}
+                    <li><a href="{{ path('user_index') }}">Utilisateurs</a></li>
+                    <li><a class="waves-effect waves-light btn red" href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                </ul>
+            </div>
+        </nav>
+    {% endif %}
+</header>
+<body>
+{% block body %}
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="{{ asset('materialize/js/materialize.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+{% endblock %}
+</body>
+</html>

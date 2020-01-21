@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DifforVert > Nouvel Utilisateur{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-top: 3%;">
+        <div class="container">
+    {{ form_start(form) }}
+        <div class="row" style="text-align: center;">
+            <img src="{{ asset('img/difforvert.png') }}">
+            <h3>Ajout d'un responsable de chaîne</h3>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                {{ form_label(form.firstname) }}
+                {{ form_widget(form.firstname) }}
+            </div>
+            <div class="input-field col s6">
+                {{ form_label(form.lastname) }}
+                {{ form_widget(form.lastname) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username) }}
+            </div>
+            <div class="input-field col s6">
+                {{ form_widget(form.roles) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                {{ form_label(form.password.first) }}
+                {{ form_widget(form.password.first) }}
+            </div>
+            <div class="input-field col s6">
+                {{ form_label(form.password.second) }}
+                {{ form_widget(form.password.second) }}
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            {{ form_widget(form.Ajouter) }}
+        </div>
+    {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

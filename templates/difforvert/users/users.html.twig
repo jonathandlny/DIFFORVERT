@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DifforVert > Utilisateurs{% endblock %}
+
+{% block body %}
+    <table class="striped">
+        <thead>
+        <tr>
+            <th>Nom de Famille</th>
+            <th>Prénom</th>
+            <th>Nom d'utilisateur</th>
+            <th>Fonction</th>
+ 	    <th>Changer le mot de passe</th>
+            <th>Action</th>
+            <th><a class="waves-effect waves-light btn" href="{{ path('user_create') }}"><i class="material-icons right">add</i>Nouvel Utilisateur</a>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for user in users %}
+            {% if user.username != "administrateur" or app.user.username == 'administrateur' %}
+                <tr>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{% if user.roles[0] == "ROLE_ADMIN" %}Administrateur{% elseif user.roles[0] == "ROLE_PRODUCTION" %}Responsable de production{% else %}Reponsable de chaîne{% endif %}</td>
+                    <td><a class="waves-effect waves-light btn" style="background-color: #6C8E15;" href="{{ path('user_reset_password', { 'username': user.username}) }}" {% if user.username != app.user.username and app.user.roles[0] != 'ROLE_ADMIN' %} disabled {% endif %}><i class="material-icons right">lock</i>MOT DE PASSE</a></td>
+                    <td><a class="waves-effect waves-light btn blue" href="{{ path('user_edit', { 'username': user.username}) }}"><i class="material-icons right">edit</i>MODIFIER</a></td>
+                    <td><a class="waves-effect waves-light btn red" href="{{ path('user_delete', { 'username': user.username}) }}"><i class="material-icons right">delete</i>SUPPRIMER</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
