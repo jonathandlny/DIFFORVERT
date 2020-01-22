@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}DifforVert > Déjà connecté{% endblock %}
+{% block title %}DifforVert > {{ app.user.username}}{% endblock %}
 
 {% block body %}
 <form method="post">
