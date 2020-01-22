@@ -22,7 +22,7 @@ class UsersFixtures extends Fixture
         $admin = new Users();
         $admin->setFirstname("Administrateur");
         $admin->setLastname("Administrateur");
-        $admin->setUsername('admin');
+        $admin->setUsername('administrateur');
         $admin->setRoles(["ROLE_ADMIN"]);
         $admin->setPassword($this->passwordEncoder->encodePassword($admin, '2Bsystem99'));
         $manager->persist($admin);
