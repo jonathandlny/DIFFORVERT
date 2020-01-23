@@ -181,9 +181,12 @@ class UsersController extends AbstractController
      * @Route("/reinitialiser_motdepasse_utilisateur/{username}", name="user_reset_password")
      * @return Response
      */
-    public function reset_password(Request $request, $username)
+    public function reset_password(Request $request, $username, UserInterface $currentUser)
     {
         $user = $this->repoUser->findOneBy(['username' => $username]);
+        if($user->getUsername() != $currentUser->getUsername() && $currentUser->getRoles()[0] != 'ROLE_ADMIN'){
+            return $this->redirectToRoute('user_index');
+        }
 
         $form = $this->createFormBuilder()
             ->add('password', RepeatedType::class, [
