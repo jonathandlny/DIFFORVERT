@@ -21,10 +21,10 @@ class Chaines
     /**
      * @ORM\Column(type="integer")
      */
-    private $chaineNumber;
+    private $chaine_number;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Lignes", mappedBy="chaineNumber")
+     * @ORM\OneToMany(targetEntity="App\Entity\Lignes", mappedBy="chaines")
      */
     private $lignes;
 
@@ -40,12 +40,12 @@ class Chaines
 
     public function getChaineNumber(): ?int
     {
-        return $this->chaineNumber;
+        return $this->chaine_number;
     }
 
-    public function setChaineNumber(int $chaineNumber): self
+    public function setChaineNumber(int $chaine_number): self
     {
-        $this->chaineNumber = $chaineNumber;
+        $this->chaine_number = $chaine_number;
 
         return $this;
     }
@@ -62,7 +62,7 @@ class Chaines
     {
         if (!$this->lignes->contains($ligne)) {
             $this->lignes[] = $ligne;
-            $ligne->setChaineNumber($this);
+            $ligne->setChaines($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Chaines
         if ($this->lignes->contains($ligne)) {
             $this->lignes->removeElement($ligne);
             // set the owning side to null (unless already changed)
-            if ($ligne->getChaineNumber() === $this) {
-                $ligne->setChaineNumber(null);
+            if ($ligne->getChaines() === $this) {
+                $ligne->setChaines(null);
             }
         }
 

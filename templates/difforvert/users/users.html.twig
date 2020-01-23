@@ -26,8 +26,8 @@
                     <td>{{ user.username }}</td>
                     <td>{% if user.roles[0] == "ROLE_ADMIN" %}Administrateur{% elseif user.roles[0] == "ROLE_PRODUCTION" %}Responsable de production{% else %}Reponsable de chaîne{% endif %}</td>
                     <td><a class="waves-effect waves-light btn" style="background-color: #6C8E15;" href="{{ path('user_reset_password', { 'username': user.username}) }}" {% if user.username != app.user.username and app.user.roles[0] != 'ROLE_ADMIN' %} disabled {% endif %}><i class="material-icons right">lock</i>MOT DE PASSE</a></td>
-                    <td><a class="waves-effect waves-light btn blue" href="{{ path('user_edit', { 'username': user.username}) }}"><i class="material-icons right">edit</i>MODIFIER</a></td>
-                    <td><a class="waves-effect waves-light btn red" href="{{ path('user_delete', { 'username': user.username}) }}"><i class="material-icons right">delete</i>SUPPRIMER</a></td>
+                    <td><a class="waves-effect waves-light btn blue" href="{{ path('user_edit', { 'username': user.username}) }}"{% if user.roles[0] == 'ROLE_ADMIN' %} disabled {% endif %}><i class="material-icons right">edit</i>MODIFIER</a></td>
+                    <td><a class="waves-effect waves-light btn red" href="{{ path('user_delete', { 'username': user.username}) }}"{% if user.roles[0] == 'ROLE_ADMIN' %} disabled {% endif %}><i class="material-icons right">delete</i>SUPPRIMER</a></td>
                 </tr>
             {% endif %}
         {% endfor %}

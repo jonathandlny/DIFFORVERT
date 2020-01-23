@@ -24,6 +24,7 @@
                     <li><a href="{{ path('chaine_index') }}">Chaînes</a></li>
                     {% if app.request.get('_route') == "chaine_index" %}<li><a class="waves-effect waves-light btn" href="{{ path('chaine_index') }}">Ajouter une chaîne</a></li>{% endif %}
                     <li><a href="{{ path('user_index') }}">Utilisateurs</a></li>
+                    <li><a href="{{ path('user_index') }}">Importer FP</a></li>
                     <li><a class="waves-effect waves-light btn red" href="{{ path('app_logout') }}" alt="Se Déconnecter"><i class="material-icons center">settings_power</i></a></li>
                 </ul>
             </div>

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DifforVert > Chaînes n°1{% endblock %}
+
+{% block body %}
+    <table class="striped">
+        <thead>
+        <tr>
+            <th>Nombre de Personnes</th>
+            <th>Picking Déco</th>
+            <th>Référence</th>
+            <th>Total P°</th>
+            <th>Client</th>
+            <th>Enlèvement du</th>
+            <th>Etiquette</th>
+            <th>Hauteur Carton**</th>
+            <th>Nombre / Carton**</th>
+            <th>Nbre Cartons / palettes**</th>
+            <th>Total / palette</th>
+            <th>Nbre / Etage**</th>
+            <th>Etage / chariot**</th>
+            <th>DETAIL A PRODUIRE</th>
+            <th>Temps Total en Heures</th>
+            <th>Temps/Pal ou Rolls en minutes**</th>
+            <th>Heure Début</th>
+            <th>Heure Fin</th>
+            <th>Temps réalisé</th>
+            <th>Vérification temps</th>
+            <th>Picking Produit</th>
+            <th>Visa Responsable</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for ligne in lignes %}
+            <tr>
+                <td>{{ ligne.nbrPerson }}</td>
+                <td>{{ ligne.pickingDeco }}</td>
+                <td>{{ ligne.reference }}</td>
+                <td>{{ ligne.totalP }}</td>
+                <td>{{ ligne.client }}</td>
+                <td>{{ ligne.enlevement }}</td>
+                <td>{{ ligne.etiquette }}</td>
+                <td>{{ ligne.hauteurCarton }}</td>
+                <td>{{ ligne.nombreCarton }}</td>
+                <td>{{ ligne.nombreCartonPalettes }}</td>
+                <td>{{ ligne.totalPalette }}</td>
+                <td>{{ ligne.nbrEtage }}</td>
+                <td>{{ ligne.etageChariot }}</td>
+                <td>{{ ligne.totalChariot }}</td>
+                <td>{{ ligne.detailAProduire }}</td>
+                <td>{{ ligne.tempsTotalHeures }}</td>
+                <td>{{ ligne.tempsPaletteRollsMinutes }}</td>
+                <td>{{ ligne.heureDebut }}</td>
+                <td>{{ ligne.heureFin }}</td>
+                <td>{{ ligne.tempsRealise }}</td>
+                <td>{{ ligne.verifTemps }}</td>
+                <td>{{ ligne.pickingProduit }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

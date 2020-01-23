@@ -9,6 +9,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 /**
  * @method Chaines|null find($id, $lockMode = null, $lockVersion = null)
  * @method Chaines|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Chaines[]    findAll()
  * @method Chaines[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ChainesRepository extends ServiceEntityRepository
@@ -16,11 +17,6 @@ class ChainesRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Chaines::class);
-    }
-
-    public function findAll()
-    {
-        return $this->findBy(array(), array('chaineNumber' => 'ASC'));
     }
 
     // /**
