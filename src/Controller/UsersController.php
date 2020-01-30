@@ -166,12 +166,13 @@ class UsersController extends AbstractController
      * @Route("/supprimer_utilisateur/{username}", name="user_delete")
      * @return Response
      */
-    public function delete_user(Request $request, $username, UserInterface $current)
+    public function delete_user(Request $request, $username, UserInterface $currentUser)
     {
         $user = $this->repoUser->findOneBy(['username' => $username]);
         if($user->getUsername() != $currentUser->getUsername() && $currentUser->getRoles()[0] != 'ROLE_ADMIN'){
             return $this->redirectToRoute('user_index');
         }
+
 
         $user = $this->repoUser->findOneBy(['username' => $username]);
 

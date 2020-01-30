@@ -15,7 +15,8 @@
         {% for chaine in chaines %}
         <tr>
             <td>{{ chaine.chaineNumber }}</td>
-            <td><a class="waves-effect waves-light btn" href="{{ path('chaine_edit', { 'chaineNumber': chaine.chaineNumber}) }}">Modifier</a></td>
+            <td><a class="waves-effect waves-light btn" href="{{ path('ligne') }}">Modifier</a></td>
+{#            <td><a class="waves-effect waves-light btn" href="{{ path('chaine_edit', { 'chaineNumber': chaine.chaineNumber}) }}">Modifier</a></td>#}
             <td><a class="waves-effect waves-light btn" style="background-color: #e12f2f;" href="{{ path('chaine_suppression', { 'chaineNumber': chaine.chaineNumber }) }}">Supprimer</a></td>
         </tr>
         {% endfor %}
